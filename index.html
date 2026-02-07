@@ -223,29 +223,17 @@
         </div>
     </header>
 
-    <!-- 关于/订阅区 -->
-    <section id="about" class="py-20 bg-slate-900 border-t border-slate-800">
-        <div class="container mx-auto px-6 text-center">
-            <h2 class="text-2xl font-bold mb-6">订阅更新</h2>
-            <p class="text-slate-400 mb-8">每周末发送一周副业情报，无垃圾邮件，随时退订。</p>
-            
-            <form class="max-w-md mx-auto flex gap-2" onsubmit="event.preventDefault(); alert('感谢订阅！（此为演示功能）');">
-                <input type="email" placeholder="输入你的邮箱地址..." class="flex-1 px-4 py-3 bg-slate-800 border border-slate-700 rounded-lg focus:outline-none focus:border-indigo-500 text-white placeholder-slate-500">
-                <button type="submit" class="px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-medium rounded-lg transition-colors">
-                    订阅
-                </button>
-            </form>
-
-            <div class="mt-12 pt-8 border-t border-slate-800 flex flex-col md:flex-row justify-between items-center text-slate-500 text-sm">
-                <p>&copy; 2026 fuye365 Blog. All rights reserved.</p>
-                <div class="flex gap-4 mt-4 md:mt-0">
-                    <a href="#" class="hover:text-white transition-colors"><i data-lucide="github" class="w-5 h-5"></i></a>
-                    <a href="#" class="hover:text-white transition-colors"><i data-lucide="twitter" class="w-5 h-5"></i></a>
-                    <a href="#" class="hover:text-white transition-colors"><i data-lucide="mail" class="w-5 h-5"></i></a>
-                </div>
+    <!-- 底部版权信息 -->
+    <footer class="py-8 bg-slate-900 border-t border-slate-800">
+        <div class="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center text-slate-500 text-sm">
+            <p>&copy; 2026 副业365 Blog. All rights reserved.</p>
+            <div class="flex gap-4 mt-4 md:mt-0">
+                <a href="#" class="hover:text-white transition-colors"><i data-lucide="github" class="w-5 h-5"></i></a>
+                <a href="#" class="hover:text-white transition-colors"><i data-lucide="twitter" class="w-5 h-5"></i></a>
+                <a href="#" class="hover:text-white transition-colors"><i data-lucide="mail" class="w-5 h-5"></i></a>
             </div>
         </div>
-    </section>
+    </footer>
 
     <!-- JavaScript 交互逻辑 -->
     <script>
