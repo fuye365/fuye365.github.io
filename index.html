@@ -186,40 +186,12 @@
             opacity: 1;
         }
 
-        /* 访问计数器样式 */
-        .visit-counter {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.25rem 0.75rem;
-            background: rgba(99, 102, 241, 0.15);
-            border: 1px solid rgba(99, 102, 241, 0.3);
-            border-radius: 9999px;
+        /* 访问计数器样式 - 极简纯数字 */
+        .visit-count {
             font-size: 0.875rem;
-            font-weight: 600;
-            color: #818cf8;
-            transition: all 0.3s ease;
-            cursor: default;
-        }
-        
-        .visit-counter:hover {
-            background: rgba(99, 102, 241, 0.25);
-            border-color: rgba(99, 102, 241, 0.5);
-            transform: translateY(-1px);
-        }
-
-        .visit-counter .number {
+            color: #64748b; /* 与邮箱图标颜色一致 slate-500 */
             font-variant-numeric: tabular-nums;
-            letter-spacing: -0.025em;
-        }
-
-        .visit-counter.pulse {
-            animation: pulse-glow 0.5s ease;
-        }
-
-        @keyframes pulse-glow {
-            0%, 100% { box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.4); }
-            50% { box-shadow: 0 0 20px 5px rgba(99, 102, 241, 0.2); }
+            line-height: 1;
         }
     </style>
 </head>
@@ -427,11 +399,8 @@
                 <a href="#" class="hover:text-white transition-colors"><i data-lucide="github" class="w-5 h-5"></i></a>
                 <a href="#" class="hover:text-white transition-colors"><i data-lucide="twitter" class="w-5 h-5"></i></a>
                 <a href="#" class="hover:text-white transition-colors"><i data-lucide="mail" class="w-5 h-5"></i></a>
-                <!-- 访问计数器 -->
-                <div class="visit-counter" id="visitCounter" title="今日访问次数">
-                    <i data-lucide="eye" class="w-4 h-4"></i>
-                    <span class="number" id="visitCount">0</span>
-                </div>
+                <!-- 访问计数器 - 纯数字 -->
+                <span class="visit-count" id="visitCount">0</span>
             </div>
         </div>
     </footer>
@@ -487,7 +456,7 @@
             }, 2000);
         }
 
-        // 访问计数器功能
+        // 访问计数器功能 - 极简版
         function initVisitCounter() {
             const today = new Date().toDateString();
             const storageKey = 'visitData';
@@ -496,65 +465,29 @@
             // 获取存储的数据
             let visitData = JSON.parse(localStorage.getItem(storageKey)) || {};
             const visitCountEl = document.getElementById('visitCount');
-            const visitCounterEl = document.getElementById('visitCounter');
             
             // 检查是否是新的一天
             if (visitData.date !== today) {
                 visitData = {
                     date: today,
-                    count: 0,
-                    uniqueSessions: []
+                    count: 0
                 };
             }
             
-            // 检查当前会话是否已计数（使用 sessionStorage 避免刷新重复计数）
+            // 检查当前会话是否已计数
             const sessionId = sessionStorage.getItem(sessionKey);
             const isNewSession = !sessionId || sessionId !== today;
             
             if (isNewSession) {
                 visitData.count += 1;
                 sessionStorage.setItem(sessionKey, today);
-                
-                // 添加脉冲动画
-                setTimeout(() => {
-                    visitCounterEl.classList.add('pulse');
-                    setTimeout(() => {
-                        visitCounterEl.classList.remove('pulse');
-                    }, 500);
-                }, 100);
             }
             
             // 保存数据
             localStorage.setItem(storageKey, JSON.stringify(visitData));
             
-            // 动画显示数字
-            animateNumber(visitCountEl, visitData.count);
-        }
-
-        // 数字滚动动画
-        function animateNumber(element, target) {
-            const duration = 1000;
-            const start = 0;
-            const startTime = performance.now();
-            
-            function update(currentTime) {
-                const elapsed = currentTime - startTime;
-                const progress = Math.min(elapsed / duration, 1);
-                
-                // 使用 easeOutExpo 缓动函数
-                const easeProgress = 1 - Math.pow(2, -10 * progress);
-                const current = Math.floor(start + (target - start) * easeProgress);
-                
-                element.textContent = current.toLocaleString();
-                
-                if (progress < 1) {
-                    requestAnimationFrame(update);
-                } else {
-                    element.textContent = target.toLocaleString();
-                }
-            }
-            
-            requestAnimationFrame(update);
+            // 直接显示数字，无动画
+            visitCountEl.textContent = visitData.count;
         }
 
         // 页面加载完成后初始化计数器
