@@ -103,31 +103,33 @@
         .artistic-title {
             font-family: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
             font-weight: 900;
-            line-height: 1.6;
-            letter-spacing: 0.1em;
-            font-size: 2.5rem;
+            line-height: 1.2;
+            letter-spacing: 0.08em;
+            font-size: 1.8rem;
             position: relative;
             z-index: 10;
+            display: inline-block;
         }
 
         .title-line-left {
             display: block;
             text-align: left;
-            padding-left: 5%;
+            padding-left: 0;
             transform: perspective(500px) rotateY(3deg);
-            margin-bottom: 0.3em;
+            margin-bottom: 0.1em;
             background: linear-gradient(90deg, #ff6b6b, #feca57, #48dbfb, #ff9ff3);
             background-size: 300% 100%;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
             animation: gradientShift 3s ease infinite;
+            padding-right: 2em;
         }
 
         .title-line-right {
             display: block;
-            text-align: right;
-            padding-right: 5%;
+            text-align: left;
+            padding-left: 2em;
             transform: perspective(500px) rotateY(-3deg);
             background: linear-gradient(90deg, #ff9ff3, #54a0ff, #5f27cd, #ff6b6b);
             background-size: 300% 100%;
@@ -140,6 +142,13 @@
         @keyframes gradientShift {
             0%, 100% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
+        }
+
+        /* 响应式字体大小 */
+        @media (min-width: 768px) {
+            .artistic-title {
+                font-size: 2.2rem;
+            }
         }
 
         /* 渐变色文字（静态） */
@@ -305,7 +314,7 @@
 
         <div class="container mx-auto px-6 text-center relative z-10">
             <!-- 标题区域 -->
-            <div class="mb-16 animate-fade-in-up" style="animation-delay: 0.1s;">
+            <div class="mb-12 animate-fade-in-up" style="animation-delay: 0.1s;">
                 <div class="artistic-title">
                     <span class="title-line-left">不要让工资成为</span>
                     <span class="title-line-right">唯一的收入来源</span>
