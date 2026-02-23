@@ -26,8 +26,8 @@
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- 字体：Noto Sans SC (中文) 与 Inter (英文) -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <!-- 字体 -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
 
     <!-- GSAP 动画库 -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
@@ -96,11 +96,53 @@
         }
         .glass-card:hover {
             transform: translateY(-5px);
-            border-color: var(--accent-primary);
-            box-shadow: 0 10px 30px -10px rgba(99, 102, 241, 0.3);
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
         }
 
-        /* 渐变色文字 */
+        /* 艺术标题样式 */
+        .artistic-title {
+            font-family: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            font-weight: 900;
+            line-height: 1.6;
+            letter-spacing: 0.1em;
+            font-size: 2.5rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .title-line-left {
+            display: block;
+            text-align: left;
+            padding-left: 5%;
+            transform: perspective(500px) rotateY(3deg);
+            margin-bottom: 0.3em;
+            background: linear-gradient(90deg, #ff6b6b, #feca57, #48dbfb, #ff9ff3);
+            background-size: 300% 100%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradientShift 3s ease infinite;
+        }
+
+        .title-line-right {
+            display: block;
+            text-align: right;
+            padding-right: 5%;
+            transform: perspective(500px) rotateY(-3deg);
+            background: linear-gradient(90deg, #ff9ff3, #54a0ff, #5f27cd, #ff6b6b);
+            background-size: 300% 100%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradientShift 3s ease infinite reverse;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        /* 渐变色文字（静态） */
         .text-gradient {
             background: linear-gradient(to right, #818cf8, #c084fc);
             -webkit-background-clip: text;
@@ -121,13 +163,14 @@
             justify-content: center;
             width: 28px;
             height: 28px;
-            background: rgba(255,255,255,0.1);
+            background: rgba(255,255,255,0.15);
             border-radius: 50%;
             font-size: 14px;
             font-weight: 700;
-            border: 1px solid rgba(255,255,255,0.2);
+            border: 1px solid rgba(255,255,255,0.3);
             flex-shrink: 0;
             margin-right: auto;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
         }
         
         /* 内容区域居中 */
@@ -142,11 +185,13 @@
         /* 收益标签样式 */
         .reward-badge {
             font-size: 0.75rem;
-            padding: 0.25rem 0.5rem;
+            padding: 0.25rem 0.75rem;
             border-radius: 9999px;
-            background: rgba(255,255,255,0.1);
+            background: rgba(255,255,255,0.2);
             margin-left: 0.5rem;
-            font-weight: 600;
+            font-weight: 700;
+            border: 1px solid rgba(255,255,255,0.3);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
 
         /* 按钮网格布局优化 */
@@ -185,6 +230,52 @@
             transform: translateX(-50%) translateY(0);
             opacity: 1;
         }
+
+        /* 彩虹色卡片边框颜色 - 红橙黄绿青蓝紫 */
+        .border-rainbow-1 { border-color: rgba(239, 68, 68, 0.5); } /* 红 */
+        .border-rainbow-1:hover { border-color: rgba(239, 68, 68, 1); box-shadow: 0 10px 30px -10px rgba(239, 68, 68, 0.5); }
+        
+        .border-rainbow-2 { border-color: rgba(249, 115, 22, 0.5); } /* 橙 */
+        .border-rainbow-2:hover { border-color: rgba(249, 115, 22, 1); box-shadow: 0 10px 30px -10px rgba(249, 115, 22, 0.5); }
+        
+        .border-rainbow-3 { border-color: rgba(234, 179, 8, 0.5); } /* 黄 */
+        .border-rainbow-3:hover { border-color: rgba(234, 179, 8, 1); box-shadow: 0 10px 30px -10px rgba(234, 179, 8, 0.5); }
+        
+        .border-rainbow-4 { border-color: rgba(34, 197, 94, 0.5); } /* 绿 */
+        .border-rainbow-4:hover { border-color: rgba(34, 197, 94, 1); box-shadow: 0 10px 30px -10px rgba(34, 197, 94, 0.5); }
+        
+        .border-rainbow-5 { border-color: rgba(6, 182, 212, 0.5); } /* 青 */
+        .border-rainbow-5:hover { border-color: rgba(6, 182, 212, 1); box-shadow: 0 10px 30px -10px rgba(6, 182, 212, 0.5); }
+        
+        .border-rainbow-6 { border-color: rgba(59, 130, 246, 0.5); } /* 蓝 */
+        .border-rainbow-6:hover { border-color: rgba(59, 130, 246, 1); box-shadow: 0 10px 30px -10px rgba(59, 130, 246, 0.5); }
+        
+        .border-rainbow-7 { border-color: rgba(168, 85, 247, 0.5); } /* 紫 */
+        .border-rainbow-7:hover { border-color: rgba(168, 85, 247, 1); box-shadow: 0 10px 30px -10px rgba(168, 85, 247, 0.5); }
+
+        /* 对应文字颜色 */
+        .text-rainbow-1 { color: #fca5a5; } /* 红 */
+        .text-rainbow-2 { color: #fdba74; } /* 橙 */
+        .text-rainbow-3 { color: #fde047; } /* 黄 */
+        .text-rainbow-4 { color: #86efac; } /* 绿 */
+        .text-rainbow-5 { color: #67e8f9; } /* 青 */
+        .text-rainbow-6 { color: #93c5fd; } /* 蓝 */
+        .text-rainbow-7 { color: #d8b4fe; } /* 紫 */
+
+        /* 淡入动画 */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .animate-fade-in-up {
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
     </style>
 </head>
 <body class="antialiased selection:bg-indigo-500 selection:text-white">
@@ -213,143 +304,147 @@
         <div class="absolute bottom-0 right-0 w-[600px] h-[600px] bg-purple-600/10 rounded-full blur-[100px] -z-10"></div>
 
         <div class="container mx-auto px-6 text-center relative z-10">
-            <h1 class="text-3xl md:text-4xl font-bold mb-10 tracking-tight leading-tight animate-fade-in-up" style="animation-delay: 0.1s;">
-                别让工资成为<br>
-                <span class="text-gradient">唯一的收入来源</span>
-            </h1>
+            <!-- 标题区域 -->
+            <div class="mb-16 animate-fade-in-up" style="animation-delay: 0.1s;">
+                <div class="artistic-title">
+                    <span class="title-line-left">不要让工资成为</span>
+                    <span class="title-line-right">唯一的收入来源</span>
+                </div>
+            </div>
             
             <!-- 按钮网格 -->
             <div class="buttons-grid animate-fade-in-up" style="animation-delay: 0.3s;">
-                <!-- 按钮1: 副业资料领取 -->
-                <a href="https://pan.xunlei.com/s/VOkmYU1rAj-8_CdFg66vI_DJA1?pwd=q69r#" target="_blank" rel="noopener noreferrer" class="pl-4 pr-6 py-4 glass-card text-white rounded-full font-medium hover:bg-slate-800 transition-all flex items-center group border-cyan-500/30 hover:border-cyan-400">
-                    <span class="btn-number text-cyan-400">1</span>
+                <!-- 按钮1: 副业资料领取 - 红 -->
+                <a href="https://pan.xunlei.com/s/VOkmYU1rAj-8_CdFg66vI_DJA1?pwd=q69r#" target="_blank" rel="noopener noreferrer" class="pl-4 pr-6 py-4 glass-card text-white rounded-full font-medium hover:bg-slate-800 transition-all flex items-center group border-rainbow-1">
+                    <span class="btn-number text-rainbow-1">1</span>
                     <div class="btn-content">
-                        <i data-lucide="download" class="w-5 h-5 group-hover:translate-x-1 transition-transform text-cyan-400"></i>
+                        <i data-lucide="download" class="w-5 h-5 group-hover:translate-x-1 transition-transform text-rainbow-1"></i>
                         副业资料领取
                     </div>
                 </a>
                 
-                <!-- 按钮2: AI资料大全 -->
-                <a href="https://pan.xunlei.com/s/VOkqLCDsrOFnVScS8qTRF_86A1?pwd=8pi8#" target="_blank" rel="noopener noreferrer" class="pl-4 pr-6 py-4 glass-card text-white rounded-full font-medium hover:bg-slate-800 transition-all flex items-center group border-pink-500/30 hover:border-pink-400">
-                    <span class="btn-number text-pink-400">2</span>
+                <!-- 按钮2: AI资料大全 - 橙 -->
+                <a href="https://pan.xunlei.com/s/VOkqLCDsrOFnVScS8qTRF_86A1?pwd=8pi8#" target="_blank" rel="noopener noreferrer" class="pl-4 pr-6 py-4 glass-card text-white rounded-full font-medium hover:bg-slate-800 transition-all flex items-center group border-rainbow-2">
+                    <span class="btn-number text-rainbow-2">2</span>
                     <div class="btn-content">
-                        <i data-lucide="brain" class="w-5 h-5 group-hover:translate-x-1 transition-transform text-pink-400"></i>
+                        <i data-lucide="brain" class="w-5 h-5 group-hover:translate-x-1 transition-transform text-rainbow-2"></i>
                         AI资料大全
                     </div>
                 </a>
                 
-                <!-- 按钮3: 加入任推邦赚钱 -->
-                <a href="https://dt.bd.cn/#/pages/login/register?invite_code=6089679" target="_blank" rel="noopener noreferrer" class="pl-4 pr-6 py-4 glass-card text-white rounded-full font-medium hover:bg-slate-800 transition-all flex items-center group border-indigo-500/30 hover:border-indigo-400">
-                    <span class="btn-number text-indigo-400">3</span>
+                <!-- 按钮3: 加入任推邦赚钱 - 黄 -->
+                <a href="https://dt.bd.cn/#/pages/login/register?invite_code=6089679" target="_blank" rel="noopener noreferrer" class="pl-4 pr-6 py-4 glass-card text-white rounded-full font-medium hover:bg-slate-800 transition-all flex items-center group border-rainbow-3">
+                    <span class="btn-number text-rainbow-3">3</span>
                     <div class="btn-content">
-                        <i data-lucide="rocket" class="w-5 h-5 group-hover:translate-x-1 transition-transform text-indigo-400"></i>
+                        <i data-lucide="rocket" class="w-5 h-5 group-hover:translate-x-1 transition-transform text-rainbow-3"></i>
                         任推邦平台入口
                     </div>
                 </a>
                 
-                <!-- 按钮4: 加入蜂小推赚钱 -->
-                <a href="https://app.fengtuiwl.com/#/pages/login/reg?p=30288553" target="_blank" rel="noopener noreferrer" class="pl-4 pr-6 py-4 glass-card text-white rounded-full font-medium hover:bg-slate-800 transition-all flex items-center group border-orange-500/30 hover:border-orange-400">
-                    <span class="btn-number text-orange-400">4</span>
+                <!-- 按钮4: 加入蜂小推赚钱 - 绿 -->
+                <a href="https://app.fengtuiwl.com/#/pages/login/reg?p=30288553" target="_blank" rel="noopener noreferrer" class="pl-4 pr-6 py-4 glass-card text-white rounded-full font-medium hover:bg-slate-800 transition-all flex items-center group border-rainbow-4">
+                    <span class="btn-number text-rainbow-4">4</span>
                     <div class="btn-content">
-                        <i data-lucide="zap" class="w-5 h-5 group-hover:translate-x-1 transition-transform text-orange-400"></i>
+                        <i data-lucide="zap" class="w-5 h-5 group-hover:translate-x-1 transition-transform text-rainbow-4"></i>
                         蜂小推平台入口
                     </div>
                 </a>
                 
-                <!-- 按钮5: 加入滴滴司机赚钱 -->
-                <a href="https://www.mdnice.com/writing/9673f806e5fb4d8981e9b940d17d3b24" target="_blank" rel="noopener noreferrer" class="pl-4 pr-6 py-4 glass-card text-white rounded-full font-medium hover:bg-slate-800 transition-all flex items-center group border-emerald-500/30 hover:border-emerald-400">
-                    <span class="btn-number text-emerald-400">5</span>
+                <!-- 按钮5: 滴滴司机 - 青 -->
+                <a href="https://www.mdnice.com/writing/9673f806e5fb4d8981e9b940d17d3b24" target="_blank" rel="noopener noreferrer" class="pl-4 pr-6 py-4 glass-card text-white rounded-full font-medium hover:bg-slate-800 transition-all flex items-center group border-rainbow-5">
+                    <span class="btn-number text-rainbow-5">5</span>
                     <div class="btn-content">
-                        <i data-lucide="car" class="w-5 h-5 group-hover:translate-x-1 transition-transform text-emerald-400"></i>
-                        加入滴滴司机赚钱
+                        <i data-lucide="car" class="w-5 h-5 group-hover:translate-x-1 transition-transform text-rainbow-5"></i>
+                        滴滴司机
+                        <span class="reward-badge text-cyan-200">¥808</span>
                     </div>
                 </a>
 
-                <!-- 按钮6: 淘宝1分购（18元）- 任推邦 -->
-                <a href="https://dt.bd.cn/#/pages/login/register?invite_code=6089679" target="_blank" rel="noopener noreferrer" class="pl-4 pr-6 py-4 glass-card text-white rounded-full font-medium hover:bg-slate-800 transition-all flex items-center group border-red-500/30 hover:border-red-400">
-                    <span class="btn-number text-red-400">6</span>
+                <!-- 按钮6: 淘宝1分购（18元）- 蓝 -->
+                <a href="https://dt.bd.cn/#/pages/login/register?invite_code=6089679" target="_blank" rel="noopener noreferrer" class="pl-4 pr-6 py-4 glass-card text-white rounded-full font-medium hover:bg-slate-800 transition-all flex items-center group border-rainbow-6">
+                    <span class="btn-number text-rainbow-6">6</span>
                     <div class="btn-content">
-                        <i data-lucide="shopping-bag" class="w-5 h-5 group-hover:translate-x-1 transition-transform text-red-400"></i>
+                        <i data-lucide="shopping-bag" class="w-5 h-5 group-hover:translate-x-1 transition-transform text-rainbow-6"></i>
                         淘宝1分购
-                        <span class="reward-badge text-red-300">¥18</span>
+                        <span class="reward-badge text-blue-200">¥18</span>
                     </div>
                 </a>
 
-                <!-- 按钮7: 千问（10元）- 蜂小推 -->
-                <a href="https://app.fengtuiwl.com/#/pages/login/reg?p=30288553" target="_blank" rel="noopener noreferrer" class="pl-4 pr-6 py-4 glass-card text-white rounded-full font-medium hover:bg-slate-800 transition-all flex items-center group border-blue-500/30 hover:border-blue-400">
-                    <span class="btn-number text-blue-400">7</span>
+                <!-- 按钮7: 千问（10元）- 紫 -->
+                <a href="https://app.fengtuiwl.com/#/pages/login/reg?p=30288553" target="_blank" rel="noopener noreferrer" class="pl-4 pr-6 py-4 glass-card text-white rounded-full font-medium hover:bg-slate-800 transition-all flex items-center group border-rainbow-7">
+                    <span class="btn-number text-rainbow-7">7</span>
                     <div class="btn-content">
-                        <i data-lucide="message-circle" class="w-5 h-5 group-hover:translate-x-1 transition-transform text-blue-400"></i>
+                        <i data-lucide="message-circle" class="w-5 h-5 group-hover:translate-x-1 transition-transform text-rainbow-7"></i>
                         千问推广
-                        <span class="reward-badge text-blue-300">¥10</span>
+                        <span class="reward-badge text-purple-200">¥10</span>
                     </div>
                 </a>
 
-                <!-- 按钮8: 即梦AI（11元）- 任推邦 -->
-                <a href="https://dt.bd.cn/#/pages/login/register?invite_code=6089679" target="_blank" rel="noopener noreferrer" class="pl-4 pr-6 py-4 glass-card text-white rounded-full font-medium hover:bg-slate-800 transition-all flex items-center group border-violet-500/30 hover:border-violet-400">
-                    <span class="btn-number text-violet-400">8</span>
+                <!-- 按钮8: 即梦AI（11元）- 红 -->
+                <a href="https://dt.bd.cn/#/pages/login/register?invite_code=6089679" target="_blank" rel="noopener noreferrer" class="pl-4 pr-6 py-4 glass-card text-white rounded-full font-medium hover:bg-slate-800 transition-all flex items-center group border-rainbow-1">
+                    <span class="btn-number text-rainbow-1">8</span>
                     <div class="btn-content">
-                        <i data-lucide="sparkles" class="w-5 h-5 group-hover:translate-x-1 transition-transform text-violet-400"></i>
+                        <i data-lucide="sparkles" class="w-5 h-5 group-hover:translate-x-1 transition-transform text-rainbow-1"></i>
                         即梦AI
-                        <span class="reward-badge text-violet-300">¥11</span>
+                        <span class="reward-badge text-red-200">¥11</span>
                     </div>
                 </a>
 
-                <!-- 按钮9: 夸克网盘（7元）- 蜂小推 -->
-                <a href="https://app.fengtuiwl.com/#/pages/login/reg?p=30288553" target="_blank" rel="noopener noreferrer" class="pl-4 pr-6 py-4 glass-card text-white rounded-full font-medium hover:bg-slate-800 transition-all flex items-center group border-sky-500/30 hover:border-sky-400">
-                    <span class="btn-number text-sky-400">9</span>
+                <!-- 按钮9: 夸克网盘（7元）- 橙 -->
+                <a href="https://app.fengtuiwl.com/#/pages/login/reg?p=30288553" target="_blank" rel="noopener noreferrer" class="pl-4 pr-6 py-4 glass-card text-white rounded-full font-medium hover:bg-slate-800 transition-all flex items-center group border-rainbow-2">
+                    <span class="btn-number text-rainbow-2">9</span>
                     <div class="btn-content">
-                        <i data-lucide="cloud" class="w-5 h-5 group-hover:translate-x-1 transition-transform text-sky-400"></i>
+                        <i data-lucide="cloud" class="w-5 h-5 group-hover:translate-x-1 transition-transform text-rainbow-2"></i>
                         夸克网盘
-                        <span class="reward-badge text-sky-300">¥7</span>
+                        <span class="reward-badge text-orange-200">¥7</span>
                     </div>
                 </a>
 
-                <!-- 按钮10: 百度网盘（12元）- 任推邦 -->
-                <a href="https://dt.bd.cn/#/pages/login/register?invite_code=6089679" target="_blank" rel="noopener noreferrer" class="pl-4 pr-6 py-4 glass-card text-white rounded-full font-medium hover:bg-slate-800 transition-all flex items-center group border-blue-600/30 hover:border-blue-500">
-                    <span class="btn-number text-blue-500">10</span>
+                <!-- 按钮10: 百度网盘（12元）- 黄 -->
+                <a href="https://dt.bd.cn/#/pages/login/register?invite_code=6089679" target="_blank" rel="noopener noreferrer" class="pl-4 pr-6 py-4 glass-card text-white rounded-full font-medium hover:bg-slate-800 transition-all flex items-center group border-rainbow-3">
+                    <span class="btn-number text-rainbow-3">10</span>
                     <div class="btn-content">
-                        <i data-lucide="hard-drive" class="w-5 h-5 group-hover:translate-x-1 transition-transform text-blue-500"></i>
+                        <i data-lucide="hard-drive" class="w-5 h-5 group-hover:translate-x-1 transition-transform text-rainbow-3"></i>
                         百度网盘
-                        <span class="reward-badge text-blue-400">¥12</span>
+                        <span class="reward-badge text-yellow-200">¥12</span>
                     </div>
                 </a>
 
-                <!-- 按钮11: 迅雷网盘（15元）- 蜂小推 -->
-                <a href="https://app.fengtuiwl.com/#/pages/login/reg?p=30288553" target="_blank" rel="noopener noreferrer" class="pl-4 pr-6 py-4 glass-card text-white rounded-full font-medium hover:bg-slate-800 transition-all flex items-center group border-cyan-600/30 hover:border-cyan-500">
-                    <span class="btn-number text-cyan-500">11</span>
+                <!-- 按钮11: 迅雷网盘（15元）- 绿 -->
+                <a href="https://app.fengtuiwl.com/#/pages/login/reg?p=30288553" target="_blank" rel="noopener noreferrer" class="pl-4 pr-6 py-4 glass-card text-white rounded-full font-medium hover:bg-slate-800 transition-all flex items-center group border-rainbow-4">
+                    <span class="btn-number text-rainbow-4">11</span>
                     <div class="btn-content">
-                        <i data-lucide="zap" class="w-5 h-5 group-hover:translate-x-1 transition-transform text-cyan-500"></i>
+                        <i data-lucide="zap" class="w-5 h-5 group-hover:translate-x-1 transition-transform text-rainbow-4"></i>
                         迅雷网盘
-                        <span class="reward-badge text-cyan-400">¥15</span>
+                        <span class="reward-badge text-green-200">¥15</span>
                     </div>
                 </a>
 
-                <!-- 按钮12: 迅雷浏览器（10元）- 任推邦 -->
-                <a href="https://dt.bd.cn/#/pages/login/register?invite_code=6089679" target="_blank" rel="noopener noreferrer" class="pl-4 pr-6 py-4 glass-card text-white rounded-full font-medium hover:bg-slate-800 transition-all flex items-center group border-teal-500/30 hover:border-teal-400">
-                    <span class="btn-number text-teal-400">12</span>
+                <!-- 按钮12: 迅雷浏览器（10元）- 青 -->
+                <a href="https://dt.bd.cn/#/pages/login/register?invite_code=6089679" target="_blank" rel="noopener noreferrer" class="pl-4 pr-6 py-4 glass-card text-white rounded-full font-medium hover:bg-slate-800 transition-all flex items-center group border-rainbow-5">
+                    <span class="btn-number text-rainbow-5">12</span>
                     <div class="btn-content">
-                        <i data-lucide="compass" class="w-5 h-5 group-hover:translate-x-1 transition-transform text-teal-400"></i>
+                        <i data-lucide="compass" class="w-5 h-5 group-hover:translate-x-1 transition-transform text-rainbow-5"></i>
                         迅雷浏览器
-                        <span class="reward-badge text-teal-300">¥10</span>
+                        <span class="reward-badge text-cyan-200">¥10</span>
                     </div>
                 </a>
 
-                <!-- 按钮13: UC网盘（10元）- 蜂小推 -->
-                <a href="https://app.fengtuiwl.com/#/pages/login/reg?p=30288553" target="_blank" rel="noopener noreferrer" class="pl-4 pr-6 py-4 glass-card text-white rounded-full font-medium hover:bg-slate-800 transition-all flex items-center group border-orange-600/30 hover:border-orange-500">
-                    <span class="btn-number text-orange-500">13</span>
+                <!-- 按钮13: UC网盘（10元）- 蓝 -->
+                <a href="https://app.fengtuiwl.com/#/pages/login/reg?p=30288553" target="_blank" rel="noopener noreferrer" class="pl-4 pr-6 py-4 glass-card text-white rounded-full font-medium hover:bg-slate-800 transition-all flex items-center group border-rainbow-6">
+                    <span class="btn-number text-rainbow-6">13</span>
                     <div class="btn-content">
-                        <i data-lucide="database" class="w-5 h-5 group-hover:translate-x-1 transition-transform text-orange-500"></i>
+                        <i data-lucide="database" class="w-5 h-5 group-hover:translate-x-1 transition-transform text-rainbow-6"></i>
                         UC网盘
-                        <span class="reward-badge text-orange-400">¥10</span>
+                        <span class="reward-badge text-blue-200">¥10</span>
                     </div>
                 </a>
 
-                <!-- 按钮14: 持续增加项目（复制链接功能） -->
-                <button onclick="copyToClipboard('https://fuye365.github.io')" class="pl-4 pr-6 py-4 glass-card text-white rounded-full font-medium hover:bg-slate-800 transition-all flex items-center group border-lime-500/30 hover:border-lime-400 cursor-pointer w-full">
-                    <span class="btn-number text-lime-400">14</span>
+                <!-- 按钮14: 持续增加项目（复制链接功能）- 紫 -->
+                <button onclick="copyToClipboard('https://fuye365.github.io')" class="pl-4 pr-6 py-4 glass-card text-white rounded-full font-medium hover:bg-slate-800 transition-all flex items-center group border-rainbow-7 cursor-pointer w-full">
+                    <span class="btn-number text-rainbow-7">14</span>
                     <div class="btn-content">
-                        <i data-lucide="plus-circle" class="w-5 h-5 group-hover:rotate-90 transition-transform text-lime-400"></i>
+                        <i data-lucide="plus-circle" class="w-5 h-5 group-hover:rotate-90 transition-transform text-rainbow-7"></i>
                         持续增加项目
                     </div>
                 </button>
@@ -427,26 +522,6 @@
                 toast.classList.remove('show');
             }, 2000);
         }
-
-        // 添加淡入动画样式
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes fadeInUp {
-                from {
-                    opacity: 0;
-                    transform: translateY(20px);
-                }
-                to {
-                    opacity: 1;
-                    transform: translateY(0);
-                }
-            }
-            .animate-fade-in-up {
-                animation: fadeInUp 0.6s ease-out forwards;
-                opacity: 0;
-            }
-        `;
-        document.head.appendChild(style);
     </script>
 </body>
 </html>
