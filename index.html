@@ -99,7 +99,7 @@
             box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
         }
 
-        /* 艺术标题样式 */
+        /* 艺术标题样式 - 修复为 h1 标签 */
         .artistic-title {
             font-family: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
             font-weight: 900;
@@ -109,6 +109,8 @@
             position: relative;
             z-index: 10;
             display: inline-block;
+            margin: 0; /* 重置 h1 默认边距 */
+            padding: 0; /* 重置 h1 默认内边距 */
         }
 
         .title-line-left {
@@ -313,16 +315,14 @@
         <div class="absolute bottom-0 right-0 w-[600px] h-[600px] bg-purple-600/10 rounded-full blur-[100px] -z-10"></div>
 
         <div class="container mx-auto px-6 text-center relative z-10">
-            <!-- 标题区域 -->
-            <div class="mb-12 animate-fade-in-up" style="animation-delay: 0.1s;">
-                <div class="artistic-title">
-                    <span class="title-line-left">不要让工资成为</span>
-                    <span class="title-line-right">唯一的收入来源</span>
-                </div>
-            </div>
+            <!-- 标题区域 - 修复：使用 h1 标签 -->
+            <h1 class="artistic-title animate-fade-in-up" style="animation-delay: 0.1s;">
+                <span class="title-line-left">不要让工资成为</span>
+                <span class="title-line-right">唯一的收入来源</span>
+            </h1>
             
             <!-- 按钮网格 -->
-            <div class="buttons-grid animate-fade-in-up" style="animation-delay: 0.3s;">
+            <div class="buttons-grid mt-12 animate-fade-in-up" style="animation-delay: 0.3s;">
                 <!-- 按钮1: 副业资料领取 - 红 -->
                 <a href="https://pan.xunlei.com/s/VOkmYU1rAj-8_CdFg66vI_DJA1?pwd=q69r#" target="_blank" rel="noopener noreferrer" class="pl-4 pr-6 py-4 glass-card text-white rounded-full font-medium hover:bg-slate-800 transition-all flex items-center group border-rainbow-1">
                     <span class="btn-number text-rainbow-1">1</span>
