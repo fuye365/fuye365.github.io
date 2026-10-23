@@ -95,73 +95,204 @@
             50% { background-position: 100% 50%; }
         }
 
-        /* 平台卡片 */
-        .platform-card {
-            background: rgba(20, 27, 46, 0.85);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 1.25rem;
-            transition: all 0.3s ease;
+        /* ===== 平台卡片：与参考文件（COMCEO）完全一致 ===== */
+        .product-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.09);
+            border-radius: 16px;
+            padding: 1.25rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
+            display: flex;
+            flex-direction: column;
         }
-        .platform-card:hover {
-            transform: translateY(-6px);
-            border-color: rgba(255, 255, 255, 0.18);
-        }
-        .card-yellow:hover { box-shadow: 0 20px 40px -15px rgba(234, 179, 8, 0.35); }
-        .card-green:hover { box-shadow: 0 20px 40px -15px rgba(34, 197, 94, 0.35); }
 
-        /* 图标方块 */
-        .icon-box {
-            width: 52px;
-            height: 52px;
-            border-radius: 14px;
+        .product-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.16), transparent);
+        }
+
+        .product-card:hover {
+            transform: translateY(-3px);
+            border-color: rgba(255, 255, 255, 0.28);
+            box-shadow: 0 18px 44px rgba(0, 0, 0, 0.55);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .card-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 26px;
+            font-size: 1.4rem;
+            flex-shrink: 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card-icon::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: inherit;
+            opacity: 0.2;
+            filter: blur(15px);
+        }
+
+        /* 黄色 - 蜂小推 */
+        .card-yellow .card-icon {
+            background: linear-gradient(135deg, #eab308 0%, #ca8a04 100%);
+        }
+        .card-yellow .tag {
+            background: rgba(234, 179, 8, 0.15);
+            color: #a16207;
+        }
+        .card-yellow .cta-button {
+            background: linear-gradient(135deg, #eab308 0%, #ca8a04 100%);
+            color: white;
+            box-shadow: 0 4px 15px rgba(234, 179, 8, 0.3);
+        }
+
+        /* 绿色 - 任推邦 */
+        .card-green .card-icon {
+            background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+        }
+        .card-green .tag {
+            background: rgba(34, 197, 94, 0.12);
+            color: #16a34a;
+        }
+        .card-green .cta-button {
+            background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+            color: white;
+            box-shadow: 0 4px 15px rgba(34, 197, 94, 0.3);
+        }
+
+        .card-title-row {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            flex-wrap: wrap;
+        }
+
+        .card-title-row h3 {
+            font-family: 'Space Grotesk', 'Noto Sans SC', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        .tag {
+            font-size: 0.7rem;
+            padding: 0.15rem 0.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .product-description {
+            color: #98a2b8;
+            margin-bottom: 0.75rem;
+            font-size: 0.85rem;
+            line-height: 1.5;
+            flex-grow: 1;
+        }
+
+        .features-list {
+            list-style: none;
+            margin-bottom: 1rem;
+            padding: 0;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.4rem 0.6rem;
+        }
+
+        .features-list li {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            color: #98a2b8;
+            font-size: 0.8rem;
+        }
+
+        .features-list li::before {
+            content: '✓';
+            width: 16px;
+            height: 16px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.65rem;
+            color: #e8ecf4;
             flex-shrink: 0;
         }
-        .icon-yellow { background: linear-gradient(135deg, #eab308, #ca8a04); box-shadow: 0 6px 16px -4px rgba(234, 179, 8, 0.5); }
-        .icon-green { background: linear-gradient(135deg, #22c55e, #16a34a); box-shadow: 0 6px 16px -4px rgba(34, 197, 94, 0.5); }
 
-        /* 小徽章 */
-        .badge {
-            font-size: 0.7rem;
-            padding: 0.2rem 0.6rem;
-            border-radius: 9999px;
-            font-weight: 600;
-        }
-        .badge-yellow { background: rgba(234, 179, 8, 0.15); color: #fde047; border: 1px solid rgba(234, 179, 8, 0.3); }
-        .badge-green { background: rgba(34, 197, 94, 0.15); color: #86efac; border: 1px solid rgba(34, 197, 94, 0.3); }
-
-        /* 特性勾选 */
-        .check-yellow { color: #facc15; }
-        .check-green { color: #4ade80; }
-
-        /* CTA 按钮 */
-        .cta-btn {
-            display: flex;
+        .cta-button {
+            display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 0.5rem;
+            gap: 0.4rem;
             width: 100%;
-            padding: 0.85rem 1.5rem;
-            border-radius: 0.9rem;
-            font-weight: 700;
-            color: #fff;
-            transition: all 0.25s ease;
+            padding: 0.75rem 1.25rem;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            margin-top: auto;
         }
-        .cta-yellow {
-            background: linear-gradient(90deg, #eab308, #ca8a04);
-            box-shadow: 0 8px 20px -6px rgba(234, 179, 8, 0.5);
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
         }
-        .cta-yellow:hover { background: linear-gradient(90deg, #facc15, #eab308); transform: scale(1.02); }
-        .cta-green {
-            background: linear-gradient(90deg, #22c55e, #16a34a);
-            box-shadow: 0 8px 20px -6px rgba(34, 197, 94, 0.5);
+
+        .cta-button:hover::before {
+            left: 100%;
         }
-        .cta-green:hover { background: linear-gradient(90deg, #4ade80, #22c55e); transform: scale(1.02); }
-        .cta-btn .arrow { transition: transform 0.25s ease; }
-        .cta-btn:hover .arrow { transform: translateX(4px); }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(15, 23, 42, 0.2);
+        }
+
+        .cta-button svg {
+            width: 16px;
+            height: 16px;
+            transition: transform 0.3s ease;
+        }
+
+        .cta-button:hover svg {
+            transform: translateX(3px);
+        }
 
         /* 淡入动画 */
         @keyframes fadeInUp {
@@ -198,53 +329,59 @@
 
     <!-- 平台卡片 -->
     <main id="platforms" class="container mx-auto px-6 pb-6">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5 max-w-6xl mx-auto">
 
-            <!-- 卡片1: 蜂小推 - 红 -->
-            <div class="platform-card card-yellow p-7 flex flex-col animate-fade-in-up" style="animation-delay: 0.4s;">
-                <div class="flex items-center gap-4">
-                    <div class="icon-box icon-yellow">🐝</div>
-                    <div class="flex items-center gap-2.5">
-                        <h2 class="text-xl font-bold">蜂小推</h2>
-                        <span class="badge badge-yellow">网盘拉新</span>
+            <!-- 卡片1: 蜂小推 - 黄 -->
+            <article class="product-card card-yellow animate-fade-in-up" style="animation-delay: 0.4s;">
+                <div class="card-header">
+                    <div class="card-icon">🐝</div>
+                    <div class="card-title-row">
+                        <h3>蜂小推</h3>
+                        <span class="tag">网盘拉新</span>
                     </div>
                 </div>
-                <p class="mt-5 text-slate-400 text-sm leading-relaxed">
+                <p class="product-description">
                     综合型拉新推广任务平台，覆盖夸克、百度、迅雷、UC 等主流网盘拉新，还有淘宝1分购、即梦AI、千问等高单价任务。注册即可接单，推广链接一键生成，任务持续更新。
                 </p>
-                <div class="grid grid-cols-2 gap-x-4 gap-y-2.5 mt-6 mb-8 text-sm text-slate-300">
-                    <span class="flex items-center gap-2"><span class="check-yellow font-bold">✓</span>网盘拉新任务</span>
-                    <span class="flex items-center gap-2"><span class="check-yellow font-bold">✓</span>淘宝1分购</span>
-                    <span class="flex items-center gap-2"><span class="check-yellow font-bold">✓</span>AI推广任务</span>
-                    <span class="flex items-center gap-2"><span class="check-yellow font-bold">✓</span>任务持续更新</span>
-                </div>
-                <a href="https://app.fengxiaotui.com/#/pages/login/reg?p=30288553" target="_blank" rel="noopener noreferrer" class="cta-btn cta-yellow mt-auto">
-                    立即注册 <span class="arrow">→</span>
+                <ul class="features-list">
+                    <li>网盘拉新任务</li>
+                    <li>淘宝1分购</li>
+                    <li>AI推广任务</li>
+                    <li>任务持续更新</li>
+                </ul>
+                <a href="https://app.fengxiaotui.com/#/pages/login/reg?p=30288553" target="_blank" rel="noopener noreferrer" class="cta-button">
+                    立即注册
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                    </svg>
                 </a>
-            </div>
+            </article>
 
-            <!-- 卡片2: 任推邦 - 橙 -->
-            <div class="platform-card card-green p-7 flex flex-col animate-fade-in-up" style="animation-delay: 0.55s;">
-                <div class="flex items-center gap-4">
-                    <div class="icon-box icon-green">🚀</div>
-                    <div class="flex items-center gap-2.5">
-                        <h2 class="text-xl font-bold">任推邦</h2>
-                        <span class="badge badge-green">拉新任务</span>
+            <!-- 卡片2: 任推邦 - 绿 -->
+            <article class="product-card card-green animate-fade-in-up" style="animation-delay: 0.55s;">
+                <div class="card-header">
+                    <div class="card-icon">🚀</div>
+                    <div class="card-title-row">
+                        <h3>任推邦</h3>
+                        <span class="tag">拉新任务</span>
                     </div>
                 </div>
-                <p class="mt-5 text-slate-400 text-sm leading-relaxed">
+                <p class="product-description">
                     老牌拉新任务平台，汇聚各类 APP 拉新与推广项目，任务种类丰富、单价透明。新手小白也能快速上手，适合利用碎片时间做副业推广，多劳多得。
                 </p>
-                <div class="grid grid-cols-2 gap-x-4 gap-y-2.5 mt-6 mb-8 text-sm text-slate-300">
-                    <span class="flex items-center gap-2"><span class="check-green font-bold">✓</span>APP拉新任务</span>
-                    <span class="flex items-center gap-2"><span class="check-green font-bold">✓</span>项目种类丰富</span>
-                    <span class="flex items-center gap-2"><span class="check-green font-bold">✓</span>单价透明</span>
-                    <span class="flex items-center gap-2"><span class="check-green font-bold">✓</span>新手易上手</span>
-                </div>
-                <a href="https://tg.bd.cn/#/pages/login/register?invite_code=6089679&qd=self_team_h5" target="_blank" rel="noopener noreferrer" class="cta-btn cta-green mt-auto">
-                    立即注册 <span class="arrow">→</span>
+                <ul class="features-list">
+                    <li>APP拉新任务</li>
+                    <li>项目种类丰富</li>
+                    <li>单价透明</li>
+                    <li>新手易上手</li>
+                </ul>
+                <a href="https://tg.bd.cn/#/pages/login/register?invite_code=6089679&qd=self_team_h5" target="_blank" rel="noopener noreferrer" class="cta-button">
+                    立即注册
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                    </svg>
                 </a>
-            </div>
+            </article>
 
         </div>
     </main>
@@ -252,7 +389,7 @@
     <!-- 底部版权信息 -->
     <footer class="py-6 bg-slate-900 border-t border-slate-800">
         <div class="container mx-auto px-6 flex flex-col md:flex-row justify-center items-center text-slate-500 text-sm">
-            <p>&copy; 2026 fuye365 Blog. All rights reserved.</p>
+            <p>&copy; 2026 fuye365.github.io  All rights reserved.</p>
         </div>
     </footer>
 
